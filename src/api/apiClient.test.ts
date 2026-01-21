@@ -51,7 +51,7 @@ describe('apiClient', () => {
   })
 
   it('should return correct data', async () => {
-    const mockData = { id: 1, name: 'iPhone 15', price: 999 }
+    const mockData = { id: '1', name: 'iPhone 15', price: 999 }
     vi.mocked(fetch).mockResolvedValue({
       ok: true,
       json: () => Promise.resolve(mockData),
@@ -60,7 +60,7 @@ describe('apiClient', () => {
     const result = await apiClient('/products/1')
 
     expect(result).toEqual(mockData)
-    expect(result).toHaveProperty('id', 1)
+    expect(result).toHaveProperty('id', '1')
     expect(result).toHaveProperty('name', 'iPhone 15')
     expect(result).toHaveProperty('price', 999)
   })
