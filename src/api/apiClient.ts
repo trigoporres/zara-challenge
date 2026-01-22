@@ -13,7 +13,7 @@ export const apiClient = async (
       ...options.headers,
     },
   })
-  console.log(response)
+
   if (!response.ok) throw new Error('Request failed')
   return response.json()
 }
