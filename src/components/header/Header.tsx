@@ -1,28 +1,6 @@
-import styled from 'styled-components';
-
 import { LogoCmp } from './Logo';
 import { BagCmp } from './Bag';
-
-const Header = styled.header`
-  /* Header */
-
-  /* Auto layout */
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  padding: 24px 100px;
-  gap: 20px;
-
-  position: absolute;
-  width: 100%;
-  height: 80px;
-  left: 0px;
-  top: 0px;
-  box-sizing: border-box;
-
-  background: #ffffff;
-`;
+import './Header.css';
 
 interface HeaderProps {
   cartItemCount: number;
@@ -31,9 +9,9 @@ interface HeaderProps {
 
 export const HeaderCmp = ({ cartItemCount, hideBag }: HeaderProps) => {
   return (
-    <Header>
+    <header className="header" role="banner" aria-label="Site header">
       <LogoCmp />
       {!hideBag && <BagCmp itemCount={cartItemCount} />}
-    </Header>
+    </header>
   );
 };
