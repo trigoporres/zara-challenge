@@ -5,8 +5,6 @@ interface ProgressBarProps {
 }
 
 const ProgressBar = styled.div<{ width: string }>`
-  /* Loading bar */
-
   position: absolute;
   height: 1px;
   left: 0px;
@@ -17,5 +15,15 @@ const ProgressBar = styled.div<{ width: string }>`
 `;
 
 export const ProgressBarCmp = ({ progress }: ProgressBarProps) => {
-  return <ProgressBar width={`${progress}%`} />;
+  return (
+    <ProgressBar
+      width={`${progress}%`}
+      role="progressbar"
+      aria-valuenow={progress}
+      aria-valuemin={0}
+      aria-valuemax={100}
+      aria-label="loading progress"
+      aria-live="polite"
+    />
+  );
 };
