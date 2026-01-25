@@ -1,15 +1,6 @@
 import { createContext, useMemo, useState } from 'react';
 import type { ReactNode } from 'react';
-
-export interface CartItem {
-  id: string;
-  name: string;
-  price: number;
-  quantity: number;
-  imageUrl: string;
-  storage: string;
-  color: string;
-}
+import { CartSchema, type CartItem } from '../schemas/product.schemas';
 
 export interface CartActions {
   addToCart: (item: CartItem) => void;
@@ -23,9 +14,38 @@ export const CartDispatchContext = createContext<CartActions | null>(null);
 
 export function CartProvider({ children }: { children: ReactNode }) {
   const [cart, setCart] = useState<CartItem[]>(() => {
-    // Inicialización desde localStorage solo en mount
-    const stored = localStorage.getItem('shopping-cart');
-    return stored ? JSON.parse(stored) : [];
+    // Inicialización desde localStorage solo en mount con validación Zod
+    try {
+      const stored = localStorage.getItem('shopping-cart');
+      if (!stored) return [];
+
+      const parsed = JSON.parse(stored);
+
+      // ✅ VALIDACIÓN CON ZOD - Protege contra datos corruptos o maliciosos
+      const validated = CartSchema.safeParse(parsed);
+
+      if (!validated.success) {
+        // Log detallado del error en desarrollo
+        if (import.meta.env.DEV) {
+          console.error('❌ Invalid cart data in localStorage:', {
+            error: validated.error.toString(),
+            receivedData: parsed,
+          });
+        }
+        // Limpia localStorage corrupto
+        localStorage.removeItem('shopping-cart');
+        return [];
+      }
+
+      return validated.data; // ✅ Datos validados y seguros
+    } catch (error) {
+      // Error al parsear JSON (localStorage corrupto)
+      if (import.meta.env.DEV) {
+        console.error('Error parsing cart from localStorage:', error);
+      }
+      localStorage.removeItem('shopping-cart');
+      return [];
+    }
   });
 
   // Actions memoizadas - solo se crean una vez
