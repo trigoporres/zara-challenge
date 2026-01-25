@@ -1,6 +1,7 @@
 import { useNavigate } from 'react-router-dom';
 import { styled } from 'styled-components';
-import { useCart } from '../hooks/useCart';
+
+import { useCart } from '../hooks';
 
 const CartContainer = styled.div`
   display: flex;
@@ -249,7 +250,9 @@ export const Cart = () => {
             <TotalText>TOTAL</TotalText>
             <TotalAmount>{formatPrice(total)} EUR</TotalAmount>
           </TotalLabel>
-          <PayButton onClick={() => alert('Payment functionality not implemented')}>
+          <PayButton
+            onClick={() => alert('Payment functionality not implemented')}
+          >
             PAY
           </PayButton>
         </CheckoutSection>

@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { styled } from 'styled-components';
 
-import type { ProductDetail } from '../../types';
+import type { ProductDetail } from '../../schemas/product.schemas';
 
 import { useCart } from '../../hooks/useCart';
 

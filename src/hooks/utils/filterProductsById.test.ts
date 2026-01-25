@@ -1,6 +1,6 @@
 import { describe, expect } from 'vitest';
 import { filterProductsById } from './filterProductsById';
-import type { Product } from '../../types';
+import type { Product } from '../../schemas/product.schemas';
 
 describe('filterProductsById', () => {
   const cases: [string, Product[], Product[]][] = [

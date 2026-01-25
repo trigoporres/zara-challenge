@@ -1,4 +1,4 @@
-import type { Product } from '../../types';
+import type { Product } from '../../schemas/product.schemas';
 
 export const filterProductsById = (products: Product[]) => {
   const uniqueProductsMap = new Map<string, Product>()

@@ -1,13 +1,14 @@
 import { useState, useEffect } from 'react';
-import { useProducts } from '../hooks/useProducts';
-import { useProgressBar } from '../hooks/useProgressBar';
 import { useNavigate, useSearchParams } from 'react-router-dom';
-import { ProgressBarCmp } from '../components/ProgressBar';
 import styled from 'styled-components';
-import { CardSmartphone } from '../components/cardSmartphone/CardSmartphone';
-import { SearchBar } from '../components/SearchBar';
-import { ResultsCounter } from '../components/ResultsCounter';
-import { useDebounce } from '../hooks/useDebounce';
+
+import { useProducts, useDebounce, useProgressBar } from '../hooks';
+import {
+  ProgressBarCmp,
+  CardSmartphone,
+  SearchBar,
+  ResultsCounter,
+} from '../components';
 
 const Container = styled.main`
   /* Content */

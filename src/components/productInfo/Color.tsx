@@ -1,6 +1,6 @@
 import { styled } from 'styled-components';
 
-import type { ProductDetail } from '../../types';
+import type { ProductDetail } from '../../schemas/product.schemas';
 
 const ColorOptionsRow = styled.div`
   /* Color options */

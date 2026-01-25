@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { productService } from '../services/productService';
 import { filterProductsById } from './utils/filterProductsById';
-import type { Product } from '../types';
+import type { Product } from '../schemas/product.schemas';
 
 // Custom hook to fetch products
 // The API returns the product XMI-RN13P5G as duplicate, so we need to:

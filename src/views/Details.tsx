@@ -2,13 +2,15 @@ import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { styled } from 'styled-components';
 
-import type { ProductDetail } from '../types';
+import type { ProductDetail } from '../schemas';
 
-import { productService } from '../services/productService';
-import { ProductInfo } from '../components/productInfo/ProductInfo';
-import { Specifications } from '../components/specifications';
-import { SimilarItems } from '../components/similarItems';
-import { BackButton } from '../components/backButton';
+import { productService } from '../services';
+import {
+  ProductInfo,
+  Specifications,
+  SimilarItems,
+  BackButton,
+} from '../components';
 
 const Container = styled.main`
   /* Desktop / Detail / Empty */
@@ -100,7 +102,9 @@ export const Details = () => {
           {/* Left side: Image */}
           <ImageContainer>
             <OptionImg
-              src={productDetail?.colorOptions?.[selectedColor]?.imageUrl ?? null}
+              src={
+                productDetail?.colorOptions?.[selectedColor]?.imageUrl ?? null
+              }
               alt=""
             />
           </ImageContainer>

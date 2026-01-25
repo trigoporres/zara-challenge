@@ -1,6 +1,6 @@
 import { styled } from 'styled-components';
 import { useNavigate } from 'react-router-dom';
-import type { Product } from '../../types';
+import type { Product } from '../../schemas/product.schemas';
 import { CardSmartphone } from '../cardSmartphone/CardSmartphone';
 
 const SimilarContainer = styled.div`

@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import type { Product } from '../../types';
+import type { Product } from '../../schemas/product.schemas';
 import { ImageSmartphone } from './ImageSmartphone';
 import { InfoSmartphone, Brand, Name, BasePrice } from './InfoSmartphone';
 

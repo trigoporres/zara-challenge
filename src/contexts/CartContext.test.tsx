@@ -1,6 +1,10 @@
 import { describe, it, expect, beforeEach, vi } from 'vitest';
 import { renderHook, act } from '@testing-library/react';
-import { CartProvider, CartStateContext, CartDispatchContext } from './CartContext';
+import {
+  CartProvider,
+  CartStateContext,
+  CartDispatchContext,
+} from './CartContext';
 import { useContext } from 'react';
 
 describe('CartContext with Zod validation', () => {
@@ -153,12 +157,14 @@ describe('CartContext with Zod validation', () => {
   });
 
   it('should handle corrupted JSON in localStorage', () => {
+    vi.spyOn(console, 'error').mockImplementation(() => {});
     localStorage.setItem('shopping-cart', 'invalid-json{[');
 
     const { result } = renderHook(() => useCart(), { wrapper });
 
     expect(result.current.cart).toEqual([]);
     expect(localStorage.getItem('shopping-cart')).toBeNull();
+    vi.restoreAllMocks();
   });
 
   it('should add item to cart and persist to localStorage', () => {

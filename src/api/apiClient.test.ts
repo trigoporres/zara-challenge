@@ -1,6 +1,7 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest';
-import { apiClient } from './apiClient';
 import { z } from 'zod';
+
+import { apiClient } from './apiClient';
 import { ProductSchema } from '../schemas/product.schemas';
 
 describe('apiClient', () => {
@@ -21,7 +22,7 @@ describe('apiClient', () => {
 
     expect(fetch).toHaveBeenCalledWith(
       `${import.meta.env.VITE_API_BASE_URL}/test-endpoint`,
-      expect.any(Object)
+      expect.any(Object),
     );
   });
 
@@ -42,7 +43,7 @@ describe('apiClient', () => {
           'x-api-key': import.meta.env.VITE_API_KEY,
           'Content-Type': 'application/json',
         }),
-      })
+      }),
     );
   });
 
@@ -54,7 +55,7 @@ describe('apiClient', () => {
     } as Response);
 
     await expect(apiClient('/bad-endpoint', TestSchema)).rejects.toThrow(
-      'HTTP 404: Not Found'
+      'HTTP 404: Not Found',
     );
   });
 
@@ -94,7 +95,7 @@ describe('apiClient', () => {
     } as Response);
 
     await expect(apiClient('/products/123', ProductSchema)).rejects.toThrow(
-      'Invalid data from API'
+      'Invalid data from API',
     );
   });
 
@@ -113,15 +114,15 @@ describe('apiClient', () => {
     } as Response);
 
     await expect(apiClient('/products/123', ProductSchema)).rejects.toThrow(
-      'Invalid data from API'
+      'Invalid data from API',
     );
   });
 
   it('should reject empty required fields', async () => {
     const invalidData = {
-      id: '',  // ❌ ID vacío
+      id: '', // ❌ ID vacío
       name: 'iPhone',
-      brand: '',  // ❌ Brand vacío
+      brand: '', // ❌ Brand vacío
       basePrice: 999,
       imageUrl: 'https://example.com/image.jpg',
     };
@@ -132,7 +133,7 @@ describe('apiClient', () => {
     } as Response);
 
     await expect(apiClient('/products/123', ProductSchema)).rejects.toThrow(
-      'Invalid data from API'
+      'Invalid data from API',
     );
   });
 });
