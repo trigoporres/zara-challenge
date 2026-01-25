@@ -6,6 +6,11 @@ const SpecsContainer = styled.div`
   flex-direction: column;
   width: 80%;
   padding: 48px 0;
+
+  @media (max-width: 600px) {
+    width: 90%;
+    padding: 32px 0;
+  }
 `;
 
 const Title = styled.h2`
@@ -30,6 +35,12 @@ const SpecRow = styled.div`
   justify-content: space-between;
   padding: 24px 0;
   border-bottom: 1px solid #e0e0e0;
+
+  @media (max-width: 600px) {
+    flex-direction: column;
+    gap: 8px;
+    padding: 16px 0;
+  }
 `;
 
 const SpecLabel = styled.div`
@@ -41,6 +52,11 @@ const SpecLabel = styled.div`
   text-transform: uppercase;
   color: #000000;
   flex: 0 0 200px;
+
+  @media (max-width: 600px) {
+    flex: none;
+    font-weight: 500;
+  }
 `;
 
 const SpecValue = styled.div`

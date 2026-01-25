@@ -33,6 +33,12 @@ const BackContainer = styled.button`
   &:hover {
     opacity: 0.7;
   }
+
+  @media (max-width: 600px) {
+    padding: 16px 20px;
+    height: 52px;
+    top: 68px;
+  }
 `;
 
 const ArrowIcon = styled.svg`

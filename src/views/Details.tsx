@@ -22,13 +22,18 @@ const Container = styled.main`
   gap: 48px;
 
   position: absolute;
-  width: 1920px;
-  max-width: 100%;
+  width: 100%;
+  max-width: 1920px;
   left: 50%;
   transform: translateX(-50%);
   top: 148px;
 
   background: #ffffff;
+
+  @media (max-width: 600px) {
+    top: 120px;
+    gap: 32px;
+  }
 `;
 
 const ProductContainer = styled.div`
@@ -42,8 +47,15 @@ const ProductContainer = styled.div`
   padding: 0px;
 
   width: 80%;
-  left: calc(50% - 1200px / 2);
-  top: 234px;
+
+  @media (max-width: 900px) {
+    flex-direction: column;
+    gap: 32px;
+  }
+
+  @media (max-width: 600px) {
+    width: 90%;
+  }
 `;
 
 const ImageContainer = styled.div`
@@ -56,19 +68,31 @@ const ImageContainer = styled.div`
 
   background: #ffffff;
   box-sizing: border-box;
+
+  width: 50%;
+  min-width: 300px;
+
+  @media (max-width: 900px) {
+    width: 100%;
+    min-width: unset;
+  }
 `;
 
 const OptionImg = styled.img`
   /* Img */
 
   max-width: 100%;
-  max-height: 100%;
+  max-height: 600px;
   object-fit: contain;
 
   /* Inside auto layout */
   flex: none;
   order: 0;
   flex-grow: 0;
+
+  @media (max-width: 600px) {
+    max-height: 400px;
+  }
 `;
 
 export const Details = () => {

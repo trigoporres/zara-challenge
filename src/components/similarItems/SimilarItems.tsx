@@ -20,6 +20,12 @@ const Title = styled.h2`
   color: #000000;
   margin: 0 0 48px 0;
   padding: 0 100px;
+
+  @media (max-width: 600px) {
+    padding: 0 20px;
+    margin: 0 0 24px 0;
+    font-size: 20px;
+  }
 `;
 
 const ScrollContainer = styled.div`
@@ -46,6 +52,10 @@ const ScrollContainer = styled.div`
   &::-webkit-scrollbar-thumb:hover {
     background: #555;
   }
+
+  @media (max-width: 600px) {
+    padding: 0 20px;
+  }
 `;
 
 const ItemsWrapper = styled.div`
@@ -62,6 +72,10 @@ const CardWrapper = styled.div`
   /* Override CardSmartphone width for horizontal scroll */
   > div {
     width: 100%;
+  }
+
+  @media (max-width: 600px) {
+    width: 200px;
   }
 `;
 

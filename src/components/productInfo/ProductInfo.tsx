@@ -18,6 +18,10 @@ const Options = styled.div`
   padding: 0px;
 
   background: #ffffff;
+
+  @media (max-width: 900px) {
+    width: 100%;
+  }
 `;
 
 const OptionInfo = styled.div`
@@ -36,6 +40,14 @@ const OptionInfo = styled.div`
   flex: none;
   order: 1;
   flex-grow: 0;
+
+  @media (max-width: 900px) {
+    width: 100%;
+  }
+
+  @media (max-width: 600px) {
+    gap: 32px;
+  }
 `;
 
 const SectionContainer = styled.div`
@@ -51,6 +63,10 @@ const SectionContainer = styled.div`
   order: 1;
   align-self: stretch;
   flex-grow: 0;
+
+  @media (max-width: 600px) {
+    width: 100%;
+  }
 `;
 
 const SectionLabel = styled.p`
@@ -106,6 +122,10 @@ const AddToCartButton = styled.button<{ disabled?: boolean }>`
 
   &:hover {
     background: ${(props) => (props.disabled ? '#F5F5F5' : '#333333')};
+  }
+
+  @media (max-width: 600px) {
+    width: 100%;
   }
 `;
 

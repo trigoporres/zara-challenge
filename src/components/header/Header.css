@@ -16,3 +16,10 @@
 
   background: #ffffff;
 }
+
+@media (max-width: 600px) {
+  .header {
+    padding: 16px 20px;
+    height: 68px;
+  }
+}
