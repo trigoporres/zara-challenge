@@ -7,6 +7,8 @@ export interface CartItem {
   price: number;
   quantity: number;
   imageUrl: string;
+  storage: string;
+  color: string;
 }
 
 export interface CartActions {

@@ -4,7 +4,7 @@ import { useProgressBar } from '../hooks/useProgressBar';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import { ProgressBarCmp } from '../components/ProgressBar';
 import styled from 'styled-components';
-import { CardSmartphone } from '../components/CardSmartphone/CardSmartphone';
+import { CardSmartphone } from '../components/cardSmartphone/CardSmartphone';
 import { SearchBar } from '../components/SearchBar';
 import { ResultsCounter } from '../components/ResultsCounter';
 import { useDebounce } from '../hooks/useDebounce';

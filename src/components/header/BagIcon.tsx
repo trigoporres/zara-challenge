@@ -5,9 +5,9 @@ interface BagIconProps {
 export const BagIcon = ({ itemCount }: BagIconProps) => {
   return (
     <svg
-      width="33"
+      width="45"
       height="26"
-      viewBox="0 0 33 26"
+      viewBox="0 0 45 26"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
       aria-hidden="true"
@@ -19,7 +19,7 @@ export const BagIcon = ({ itemCount }: BagIconProps) => {
         fill="black"
       />
       <text
-        x="28.5"
+        x="34"
         y="16"
         fontSize="10"
         fontFamily="Arial, sans-serif"
