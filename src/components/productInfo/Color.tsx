@@ -76,7 +76,6 @@ export const Color = ({
   selectedColor: number;
   setSelectedColor: (index: number) => void;
 }) => {
-  debugger;
   return (
     <>
       <ColorOptionsRow>
