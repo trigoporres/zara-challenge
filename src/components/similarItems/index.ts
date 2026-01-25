@@ -1,1 +1,1 @@
-export { SimilarItems } from './SimilarItems';
+export * from './SimilarItems';
