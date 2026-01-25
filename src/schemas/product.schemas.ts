@@ -38,7 +38,7 @@ const SpecsSchema = z.object({
   selfieCamera: z.string(),
   battery: z.string(),
   os: z.string(),
-  screenRefreshRate: z.string(),
+  screenRefreshRate: z.string().optional(),
 });
 
 // Schema para ProductDetail (detalles de producto)
