@@ -140,7 +140,6 @@ export const ProductInfo = ({
 }) => {
   const [selectedStorage, setSelectedStorage] = useState<string>('');
   const { addToCart, cart, updateCartItem } = useCart();
-  console.log(cart);
   const handleAddToCart = () => {
     if (productDetail && selectedStorage) {
       const existingCartItem = cart.find((c) => c.id === productDetail.id);
