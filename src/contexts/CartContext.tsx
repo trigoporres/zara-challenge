@@ -5,6 +5,8 @@ import { CartSchema, type CartItem } from '../schemas/product.schemas';
 export interface CartActions {
   addToCart: (item: CartItem) => void;
   removeFromCart: (id: string) => void;
+  removeFromUnitCart: (id: string) => void;
+  updateCartItem: (id: string, updates: Partial<CartItem>) => void;
   clearCart: () => void;
 }
 
@@ -62,6 +64,28 @@ export function CartProvider({ children }: { children: ReactNode }) {
       removeFromCart: (id: string) => {
         setCart((prev) => {
           const newCart = prev.filter((item) => item.id !== id);
+          localStorage.setItem('shopping-cart', JSON.stringify(newCart));
+          return newCart;
+        });
+      },
+
+      removeFromUnitCart: (id: string) => {
+        setCart((prev) => {
+          const newCart = prev.map((item) =>
+            item.id === id && item.quantity > 1
+              ? { ...item, quantity: item.quantity - 1 }
+              : item,
+          );
+          localStorage.setItem('shopping-cart', JSON.stringify(newCart));
+          return newCart;
+        });
+      },
+
+      updateCartItem: (id: string, updates: Partial<CartItem>) => {
+        setCart((prev) => {
+          const newCart = prev.map((item) =>
+            item.id === id ? { ...item, ...updates } : item,
+          );
           localStorage.setItem('shopping-cart', JSON.stringify(newCart));
           return newCart;
         });

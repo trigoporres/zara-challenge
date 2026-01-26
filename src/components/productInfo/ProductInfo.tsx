@@ -139,19 +139,26 @@ export const ProductInfo = ({
   setSelectedColor: (index: number) => void;
 }) => {
   const [selectedStorage, setSelectedStorage] = useState<string>('');
-  const { addToCart } = useCart();
-
+  const { addToCart, cart, updateCartItem } = useCart();
+  console.log(cart);
   const handleAddToCart = () => {
     if (productDetail && selectedStorage) {
-      addToCart({
-        id: productDetail.id,
-        name: productDetail.name,
-        price: productDetail.basePrice,
-        quantity: 1,
-        imageUrl: productDetail.colorOptions?.[selectedColor]?.imageUrl || '',
-        storage: selectedStorage,
-        color: productDetail.colorOptions?.[selectedColor]?.name || '',
-      });
+      const existingCartItem = cart.find((c) => c.id === productDetail.id);
+      if (existingCartItem) {
+        updateCartItem(existingCartItem.id, {
+          quantity: existingCartItem.quantity + 1,
+        });
+      } else {
+        addToCart({
+          id: productDetail.id,
+          name: productDetail.name,
+          price: productDetail.basePrice,
+          quantity: 1,
+          imageUrl: productDetail.colorOptions?.[selectedColor]?.imageUrl || '',
+          storage: selectedStorage,
+          color: productDetail.colorOptions?.[selectedColor]?.name || '',
+        });
+      }
     }
   };
   return (

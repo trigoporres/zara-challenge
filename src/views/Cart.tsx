@@ -194,7 +194,7 @@ const EmptyCart = styled.div`
 `;
 
 export const Cart = () => {
-  const { cart, removeFromCart } = useCart();
+  const { cart, removeFromCart, removeFromUnitCart } = useCart();
   const navigate = useNavigate();
 
   const total = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
@@ -206,7 +206,7 @@ export const Cart = () => {
       maximumFractionDigits: 0,
     }).format(price);
   };
-
+  debugger;
   if (cart.length === 0) {
     return (
       <CartContainer>
@@ -231,11 +231,17 @@ export const Cart = () => {
             <ProductDetails>
               <ProductName>{product.name}</ProductName>
               <ProductSpecs>
-                {product.storage} | {product.color}
+                {product.storage} | {product.color} | Qty: {product.quantity}
               </ProductSpecs>
               <ProductPrice>{formatPrice(product.price)} EUR</ProductPrice>
-              <RemoveButton onClick={() => removeFromCart(product.id)}>
-                Eliminar
+              <RemoveButton
+                onClick={() =>
+                  product.quantity > 1
+                    ? removeFromUnitCart(product.id)
+                    : removeFromCart(product.id)
+                }
+              >
+                {product.quantity > 1 ? `Remove One` : `Remove from Cart`}
               </RemoveButton>
             </ProductDetails>
           </CartItem>
