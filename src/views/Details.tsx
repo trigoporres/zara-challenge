@@ -118,6 +118,10 @@ export const Details = () => {
     fetchProducts();
   }, [id]);
 
+  useEffect(() => {
+    scrollTo(0, 0);
+  }, []);
+
   return (
     <>
       <BackButton />
