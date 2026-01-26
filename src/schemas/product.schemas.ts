@@ -49,7 +49,6 @@ export const ProductsArraySchema = z.array(ProductSchema);
 export const CartItemSchema = z.object({
   id: z.string().min(1),
   name: z.string().min(1).max(200),
-  specs: SpecsSchema,
   price: z.number().positive(),
   quantity: z.number().int().positive(),
   imageUrl: safeUrl(),
