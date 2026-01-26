@@ -65,7 +65,7 @@ describe('apiClient', () => {
       name: 'iPhone 15',
       brand: 'Apple',
       basePrice: 999,
-      imageUrl: 'https://example.com/iphone.jpg',
+      imageUrl: `${import.meta.env.VITE_API_BASE_URL}/images/iphone.jpg`,
     };
     vi.mocked(fetch).mockResolvedValue({
       ok: true,
