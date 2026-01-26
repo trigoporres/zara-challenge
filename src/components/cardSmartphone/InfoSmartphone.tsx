@@ -120,7 +120,7 @@ export const InfoSmartphone = ({ product }: { product: Product }) => {
         <Brand>{product.brand}</Brand>
         <Name>{product.name}</Name>
       </BrandName>
-      <BasePrice>$ {product.basePrice}</BasePrice>
+      <BasePrice>{product.basePrice} EUR</BasePrice>
     </ProductInfo>
   );
 };
