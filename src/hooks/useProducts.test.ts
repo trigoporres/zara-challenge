@@ -189,9 +189,10 @@ describe('useProducts', () => {
       rerender({ searchQuery: 'iphone' });
 
       await waitFor(() => {
-        expect(result.current.error).toBeNull();
+        expect(result.current.loading).toBe(false);
       });
 
+      expect(result.current.error).toBeNull();
       expect(result.current.products).toEqual(mockProducts);
     });
   });
