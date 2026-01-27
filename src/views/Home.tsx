@@ -136,7 +136,7 @@ export const Home = () => {
       {error && <div>Error: {error.message}</div>}
 
       {!loading && !error && products && products.length > 0 ? (
-        <Grid>
+        <Grid role="list" aria-label="Product list" data-testid="product-list">
           {products.map((product) => (
             <CardSmartphone
               key={product.id}

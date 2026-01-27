@@ -27,9 +27,6 @@ export const useProducts = ({ searchQuery }: { searchQuery?: string } = {}) => {
           data = await productService.getAll();
         }
 
-        // Simulate slow API for testing progress bar (remove this in production)
-        // await new Promise((resolve) => setTimeout(resolve, 4000));
-
         setProducts(filterProductsById(data).slice(0, 20));
       } catch (err) {
         setError(

@@ -3,7 +3,7 @@ import type { Product } from '../../schemas/product.schemas';
 import { ImageSmartphone } from './ImageSmartphone';
 import { InfoSmartphone, Brand, Name, BasePrice } from './InfoSmartphone';
 
-const CardPhone = styled.div`
+const CardPhone = styled.article`
   /* Smartphone card */
 
   /* Auto layout */
