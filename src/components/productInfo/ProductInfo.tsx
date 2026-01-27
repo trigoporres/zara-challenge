@@ -159,7 +159,10 @@ export const ProductInfo = ({
         addToCart({
           id: productDetail.id,
           name: productDetail.name,
-          price: productDetail.basePrice,
+          price:
+            productDetail?.storageOptions?.find(
+              (s) => s.capacity === selectedStorage,
+            )?.price ?? productDetail.basePrice,
           quantity: 1,
           imageUrl: productDetail.colorOptions?.[selectedColor]?.imageUrl || '',
           storage: selectedStorage,
@@ -173,7 +176,11 @@ export const ProductInfo = ({
       <OptionInfo>
         <TitlePrice
           name={productDetail?.name}
-          basePrice={productDetail?.basePrice}
+          basePrice={
+            productDetail?.storageOptions?.find(
+              (s) => s.capacity === selectedStorage,
+            )?.price ?? productDetail.basePrice
+          }
         />
         {/* Storage Options */}
         <SectionContainer>
