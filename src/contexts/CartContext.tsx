@@ -10,38 +10,32 @@ export interface CartActions {
   clearCart: () => void;
 }
 
-// Contextos
 export const CartStateContext = createContext<CartItem[]>([]);
 export const CartDispatchContext = createContext<CartActions | null>(null);
 
 export function CartProvider({ children }: { children: ReactNode }) {
   const [cart, setCart] = useState<CartItem[]>(() => {
-    // Inicialización desde localStorage solo en mount con validación Zod
     try {
       const stored = localStorage.getItem('shopping-cart');
       if (!stored) return [];
 
       const parsed = JSON.parse(stored);
 
-      // ✅ VALIDACIÓN CON ZOD - Protege contra datos corruptos o maliciosos
       const validated = CartSchema.safeParse(parsed);
 
       if (!validated.success) {
-        // Log detallado del error en desarrollo
         if (import.meta.env.DEV) {
           console.error('❌ Invalid cart data in localStorage:', {
             error: validated.error.toString(),
             receivedData: parsed,
           });
         }
-        // Limpia localStorage corrupto
         localStorage.removeItem('shopping-cart');
         return [];
       }
 
-      return validated.data; // ✅ Datos validados y seguros
+      return validated.data;
     } catch (error) {
-      // Error al parsear JSON (localStorage corrupto)
       if (import.meta.env.DEV) {
         console.error('Error parsing cart from localStorage:', error);
       }
@@ -50,7 +44,6 @@ export function CartProvider({ children }: { children: ReactNode }) {
     }
   });
 
-  // Actions memoizadas - solo se crean una vez
   const actions = useMemo<CartActions>(
     () => ({
       addToCart: (item: CartItem) => {
@@ -97,7 +90,7 @@ export function CartProvider({ children }: { children: ReactNode }) {
       },
     }),
     [],
-  ); // Sin dependencias - funciones estables
+  );
 
   return (
     <CartDispatchContext.Provider value={actions}>
