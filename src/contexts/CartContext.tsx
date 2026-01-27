@@ -60,7 +60,6 @@ export function CartProvider({ children }: { children: ReactNode }) {
       },
 
       removeFromCart: (id: string, color: string, storage: string) => {
-        debugger;
         setCart((prev) => {
           const newCart = prev.filter(
             (item) =>
@@ -74,7 +73,6 @@ export function CartProvider({ children }: { children: ReactNode }) {
       },
 
       removeFromUnitCart: (id: string, color: string, storage: string) => {
-        debugger;
         setCart((prev) => {
           const newCart = prev.map((item) =>
             item.id === id &&
