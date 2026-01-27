@@ -63,9 +63,12 @@ export const Storage = ({
   selectedStorage,
   setSelectedStorage,
 }: {
-  storageOptions: any[];
-  selectedStorage: any;
-  setSelectedStorage: any;
+  storageOptions: {
+    capacity: string;
+    price: number;
+  }[];
+  selectedStorage: string;
+  setSelectedStorage: (storage: string) => void;
 }) => {
   return (
     <OptionsRow
