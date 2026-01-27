@@ -77,13 +77,15 @@ export const Color = ({
 }) => {
   return (
     <>
-      <ColorOptionsRow>
+      <ColorOptionsRow role="group" aria-label="Color options">
         {colorOptions?.map((colorOption, index) => (
           <ColorSquare
             key={index}
             color={colorOption.hexCode}
             selected={selectedColor === index}
             onClick={() => setSelectedColor(index)}
+            aria-label={colorOption.name}
+            aria-pressed={selectedColor === index}
           />
         ))}
       </ColorOptionsRow>

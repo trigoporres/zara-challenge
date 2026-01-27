@@ -68,12 +68,17 @@ export const Storage = ({
   setSelectedStorage: any;
 }) => {
   return (
-    <OptionsRow>
+    <OptionsRow
+      role="group"
+      aria-label="Storage options"
+      aria-labelledby="storage-label"
+    >
       {storageOptions?.map((storage) => (
         <OptionButton
           key={storage.capacity}
           selected={selectedStorage === storage.capacity}
           onClick={() => setSelectedStorage(storage.capacity)}
+          aria-pressed={selectedStorage === storage.capacity}
         >
           {storage.capacity}
         </OptionButton>

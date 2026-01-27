@@ -172,7 +172,9 @@ export const ProductInfo = ({
         />
         {/* Storage Options */}
         <SectionContainer>
-          <SectionLabel>Storage ¿How much space do you need?</SectionLabel>
+          <SectionLabel id="storage-label">
+            Storage ¿How much space do you need?
+          </SectionLabel>
           <Storage
             storageOptions={productDetail?.storageOptions}
             selectedStorage={selectedStorage}
