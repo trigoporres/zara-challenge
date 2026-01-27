@@ -41,7 +41,10 @@ export const Cart = () => {
       <h1 className="cart-title">Cart ({totalItems})</h1>
       <div className="cart-content">
         {cart.map((product) => (
-          <div className="cart-item" key={product.id}>
+          <div
+            className="cart-item"
+            key={`${product.id}-${product.color}-${product.storage}`}
+          >
             <img
               className="cart-item__image"
               src={product.imageUrl}
@@ -59,8 +62,12 @@ export const Cart = () => {
                 className="cart-item__remove-btn"
                 onClick={() =>
                   product.quantity > 1
-                    ? removeFromUnitCart(product.id)
-                    : removeFromCart(product.id)
+                    ? removeFromUnitCart(
+                        product.id,
+                        product.color,
+                        product.storage,
+                      )
+                    : removeFromCart(product.id, product.color, product.storage)
                 }
               >
                 {product.quantity > 1 ? `Remove One` : `Remove from Cart`}

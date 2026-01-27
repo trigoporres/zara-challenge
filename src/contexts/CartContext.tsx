@@ -4,9 +4,14 @@ import { CartSchema, type CartItem } from '../schemas/product.schemas';
 
 export interface CartActions {
   addToCart: (item: CartItem) => void;
-  removeFromCart: (id: string) => void;
-  removeFromUnitCart: (id: string) => void;
-  updateCartItem: (id: string, updates: Partial<CartItem>) => void;
+  removeFromCart: (id: string, color: string, storage: string) => void;
+  removeFromUnitCart: (id: string, color: string, storage: string) => void;
+  updateCartItem: (
+    id: string,
+    color: string,
+    storage: string,
+    updates: Partial<CartItem>,
+  ) => void;
   clearCart: () => void;
 }
 
@@ -54,18 +59,28 @@ export function CartProvider({ children }: { children: ReactNode }) {
         });
       },
 
-      removeFromCart: (id: string) => {
+      removeFromCart: (id: string, color: string, storage: string) => {
+        debugger;
         setCart((prev) => {
-          const newCart = prev.filter((item) => item.id !== id);
+          const newCart = prev.filter(
+            (item) =>
+              item.id !== id ||
+              item.color !== color ||
+              item.storage !== storage,
+          );
           localStorage.setItem('shopping-cart', JSON.stringify(newCart));
           return newCart;
         });
       },
 
-      removeFromUnitCart: (id: string) => {
+      removeFromUnitCart: (id: string, color: string, storage: string) => {
+        debugger;
         setCart((prev) => {
           const newCart = prev.map((item) =>
-            item.id === id && item.quantity > 1
+            item.id === id &&
+            item.quantity > 1 &&
+            item.color === color &&
+            item.storage === storage
               ? { ...item, quantity: item.quantity - 1 }
               : item,
           );
@@ -74,10 +89,17 @@ export function CartProvider({ children }: { children: ReactNode }) {
         });
       },
 
-      updateCartItem: (id: string, updates: Partial<CartItem>) => {
+      updateCartItem: (
+        id: string,
+        color: string,
+        storage: string,
+        updates: Partial<CartItem>,
+      ) => {
         setCart((prev) => {
           const newCart = prev.map((item) =>
-            item.id === id ? { ...item, ...updates } : item,
+            item.id === id && item.color === color && item.storage === storage
+              ? { ...item, ...updates }
+              : item,
           );
           localStorage.setItem('shopping-cart', JSON.stringify(newCart));
           return newCart;

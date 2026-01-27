@@ -147,9 +147,14 @@ export const ProductInfo = ({
           c.color === (productDetail.colorOptions?.[selectedColor]?.name || ''),
       );
       if (existingCartItem) {
-        updateCartItem(existingCartItem.id, {
-          quantity: existingCartItem.quantity + 1,
-        });
+        updateCartItem(
+          existingCartItem.id,
+          existingCartItem.color,
+          existingCartItem.storage,
+          {
+            quantity: existingCartItem.quantity + 1,
+          },
+        );
       } else {
         addToCart({
           id: productDetail.id,
