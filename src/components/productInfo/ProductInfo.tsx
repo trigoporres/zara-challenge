@@ -142,7 +142,12 @@ export const ProductInfo = ({
   const { addToCart, cart, updateCartItem } = useCart();
   const handleAddToCart = () => {
     if (productDetail && selectedStorage) {
-      const existingCartItem = cart.find((c) => c.id === productDetail.id);
+      const existingCartItem = cart.find(
+        (c) =>
+          c.id === productDetail.id &&
+          c.storage === selectedStorage &&
+          c.color === (productDetail.colorOptions?.[selectedColor]?.name || ''),
+      );
       if (existingCartItem) {
         updateCartItem(existingCartItem.id, {
           quantity: existingCartItem.quantity + 1,
