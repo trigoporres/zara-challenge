@@ -13,8 +13,8 @@ import {
 import './Details.css';
 
 export const Details = () => {
-  const [productDetail, setProductDetail] = useState<ProductDetail>(
-    {} as ProductDetail,
+  const [productDetail, setProductDetail] = useState<ProductDetail | null>(
+    null,
   );
   const [selectedColor, setSelectedColor] = useState<number>(0);
 
@@ -39,6 +39,10 @@ export const Details = () => {
     scrollTo(0, 0);
   }, []);
 
+  if (!productDetail) {
+    return null;
+  }
+
   return (
     <>
       <BackButton />
@@ -47,9 +51,7 @@ export const Details = () => {
           <div className="details-image">
             <img
               className="details-image__img"
-              src={
-                productDetail?.colorOptions?.[selectedColor]?.imageUrl ?? null
-              }
+              src={productDetail.colorOptions[selectedColor]?.imageUrl}
               alt={productDetail.name}
             />
           </div>
@@ -60,7 +62,7 @@ export const Details = () => {
           />
         </div>
         <Specifications productDetail={productDetail} />
-        <SimilarItems similarProducts={productDetail?.similarProducts ?? []} />
+        <SimilarItems similarProducts={productDetail.similarProducts} />
       </main>
     </>
   );
