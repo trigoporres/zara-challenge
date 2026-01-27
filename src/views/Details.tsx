@@ -50,7 +50,7 @@ export const Details = () => {
               src={
                 productDetail?.colorOptions?.[selectedColor]?.imageUrl ?? null
               }
-              alt=""
+              alt={productDetail.name}
             />
           </div>
           <ProductInfo
