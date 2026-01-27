@@ -73,7 +73,6 @@ const SectionLabel = styled.p`
   width: auto;
   height: auto;
 
-  font-family: 'Helvetica Neue';
   font-style: normal;
   font-weight: 300;
   font-size: 14px;
@@ -109,7 +108,6 @@ const AddToCartButton = styled.button<{ disabled?: boolean }>`
   align-self: stretch;
   flex-grow: 0;
 
-  font-family: 'Helvetica Neue';
   font-style: normal;
   font-weight: 300;
   font-size: 14px;

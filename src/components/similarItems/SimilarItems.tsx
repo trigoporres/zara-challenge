@@ -12,7 +12,6 @@ const SimilarContainer = styled.div`
 `;
 
 const Title = styled.h2`
-  font-family: 'Inter', sans-serif;
   font-style: normal;
   font-weight: 400;
   font-size: 24px;
@@ -70,7 +69,7 @@ const CardWrapper = styled.div`
   width: 300px;
 
   /* Override CardSmartphone width for horizontal scroll */
-  > div {
+  > article {
     width: 100%;
   }
 

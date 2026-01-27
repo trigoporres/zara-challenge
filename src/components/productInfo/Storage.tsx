@@ -38,7 +38,6 @@ const OptionButton = styled.button<{ selected?: boolean }>`
   border: ${(props) =>
     props.selected ? '1px solid #000000' : '1px solid #cccccc'};
 
-  font-family: 'Helvetica Neue';
   font-style: normal;
   font-weight: 300;
   font-size: 14px;

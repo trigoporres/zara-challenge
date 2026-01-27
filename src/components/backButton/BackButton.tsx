@@ -20,7 +20,6 @@ const BackContainer = styled.button`
   border: none;
   cursor: pointer;
 
-  font-family: 'Inter', sans-serif;
   font-style: normal;
   font-weight: 400;
   font-size: 14px;

@@ -1,12 +1,4 @@
-:root {
-  /* Desktop */
-
-  box-sizing: border-box;
-
-  position: relative;
-  width: 100%;
-
-  background: #ebebeb;
-  border: 1px solid #000000;
-  border-radius: 2px;
+body {
+  margin: 0;
+  padding: 0;
 }

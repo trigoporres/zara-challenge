@@ -46,7 +46,6 @@ export const Brand = styled.span`
   width: 250px;
   height: 12px;
 
-  font-family: 'Helvetica Neue';
   font-style: normal;
   font-weight: 300;
   font-size: 10px;
@@ -70,7 +69,6 @@ export const Name = styled.span`
   width: 250px;
   height: 15px;
 
-  font-family: 'Helvetica Neue';
   font-style: normal;
   font-weight: 300;
   font-size: 12px;
@@ -94,7 +92,6 @@ export const BasePrice = styled.span`
   margin: 0;
   height: 15px;
 
-  font-family: 'Helvetica Neue';
   font-style: normal;
   font-weight: 300;
   font-size: 12px;

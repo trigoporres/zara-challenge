@@ -53,7 +53,6 @@ const ColorSquare = styled.button<{ color: string; selected?: boolean }>`
 `;
 
 const ColorName = styled.span<{ visible?: boolean }>`
-  font-family: 'Helvetica Neue';
   font-style: normal;
   font-weight: 300;
   font-size: 12px;

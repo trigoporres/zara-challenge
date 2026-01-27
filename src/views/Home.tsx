@@ -83,7 +83,6 @@ const NoProductsContainer = styled.div`
 
 const NoProductsText = styled.p`
   margin: 0;
-  font-family: 'Helvetica Neue';
   font-style: normal;
   font-weight: 400;
   font-size: 12px;

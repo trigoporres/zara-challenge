@@ -12,7 +12,6 @@ const CartContainer = styled.div`
 `;
 
 const CartTitle = styled.h1`
-  font-family: 'Helvetica Neue';
   font-style: normal;
   font-weight: 300;
   font-size: 14px;
@@ -52,7 +51,6 @@ const ProductDetails = styled.div`
 `;
 
 const ProductName = styled.h2`
-  font-family: 'Helvetica Neue';
   font-style: normal;
   font-weight: 300;
   font-size: 14px;
@@ -64,7 +62,6 @@ const ProductName = styled.h2`
 `;
 
 const ProductSpecs = styled.p`
-  font-family: 'Helvetica Neue';
   font-style: normal;
   font-weight: 300;
   font-size: 12px;
@@ -76,7 +73,6 @@ const ProductSpecs = styled.p`
 `;
 
 const ProductPrice = styled.p`
-  font-family: 'Helvetica Neue';
   font-style: normal;
   font-weight: 300;
   font-size: 14px;
@@ -89,7 +85,6 @@ const ProductPrice = styled.p`
 const RemoveButton = styled.button`
   background: none;
   border: none;
-  font-family: 'Helvetica Neue';
   font-style: normal;
   font-weight: 300;
   font-size: 12px;
@@ -119,7 +114,6 @@ const ContinueShoppingButton = styled.button`
   background: #ffffff;
   border: 1px solid #000000;
   padding: 16px 24px;
-  font-family: 'Helvetica Neue';
   font-style: normal;
   font-weight: 300;
   font-size: 14px;
@@ -146,7 +140,6 @@ const TotalLabel = styled.div`
 `;
 
 const TotalText = styled.span`
-  font-family: 'Helvetica Neue';
   font-style: normal;
   font-weight: 300;
   font-size: 14px;
@@ -156,7 +149,6 @@ const TotalText = styled.span`
 `;
 
 const TotalAmount = styled.span`
-  font-family: 'Helvetica Neue';
   font-style: normal;
   font-weight: 300;
   font-size: 14px;
@@ -168,7 +160,6 @@ const PayButton = styled.button`
   background: #000000;
   border: none;
   padding: 16px 48px;
-  font-family: 'Helvetica Neue';
   font-style: normal;
   font-weight: 300;
   font-size: 14px;
@@ -185,7 +176,6 @@ const PayButton = styled.button`
 const EmptyCart = styled.div`
   text-align: center;
   padding: 60px 20px;
-  font-family: 'Helvetica Neue';
   font-style: normal;
   font-weight: 300;
   font-size: 16px;
