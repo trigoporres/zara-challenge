@@ -29,28 +29,28 @@ const Title = styled.h2`
 `;
 
 const ScrollContainer = styled.div`
-  width: 100%;
+  width: 85%;
   overflow-x: auto;
   overflow-y: hidden;
-  padding: 0 100px;
   box-sizing: border-box;
+  margin: 0 auto;
 
   /* Custom scrollbar */
   &::-webkit-scrollbar {
-    height: 8px;
+    height: 5px;
   }
 
   &::-webkit-scrollbar-track {
-    background: #f1f1f1;
+    background: #fff;
   }
 
   &::-webkit-scrollbar-thumb {
-    background: #888;
+    background: #000;
     border-radius: 4px;
   }
 
   &::-webkit-scrollbar-thumb:hover {
-    background: #555;
+    background: #fff;
   }
 
   @media (max-width: 600px) {
