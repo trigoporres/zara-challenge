@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react';
 import { useNavigate, useSearchParams } from 'react-router-dom';
-import styled from 'styled-components';
 
 import { useProducts, useDebounce, useProgressBar } from '../hooks';
 import {
@@ -9,87 +8,7 @@ import {
   SearchBar,
   ResultsCounter,
 } from '../components';
-
-const Container = styled.main`
-  /* Content */
-
-  /* Auto layout */
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 24px;
-
-  position: absolute;
-  width: 1920px;
-  max-width: 100%;
-  left: 50%;
-  transform: translateX(-50%);
-  top: 80px;
-`;
-
-const Grid = styled.div`
-  /* Grid */
-
-  /* Auto layout */
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  align-items: flex-start;
-  align-content: flex-start;
-  padding: 0px 100px;
-  row-gap: 0px;
-  column-gap: 0px;
-
-  width: 100%;
-  box-sizing: border-box;
-
-  /* Inside auto layout */
-  flex: none;
-  order: 0;
-  align-self: stretch;
-  flex-grow: 0;
-
-  /* Responsive padding */
-  @media (max-width: 1200px) {
-    padding: 0px 60px;
-  }
-
-  @media (max-width: 900px) {
-    padding: 0px 40px;
-  }
-
-  @media (max-width: 600px) {
-    padding: 0px 20px;
-  }
-`;
-
-const NoProductsContainer = styled.div`
-  width: 100%;
-  padding: 8px 100px;
-  box-sizing: border-box;
-
-  @media (max-width: 1200px) {
-    padding: 8px 60px;
-  }
-
-  @media (max-width: 900px) {
-    padding: 8px 40px;
-  }
-
-  @media (max-width: 600px) {
-    padding: 8px 20px;
-  }
-`;
-
-const NoProductsText = styled.p`
-  margin: 0;
-  font-style: normal;
-  font-weight: 400;
-  font-size: 12px;
-  line-height: 15px;
-  text-transform: uppercase;
-  color: #000000;
-`;
+import './Home.css';
 
 export const Home = () => {
   const [searchParams] = useSearchParams();
@@ -111,6 +30,10 @@ export const Home = () => {
     }
   }, [searchParams]);
 
+  useEffect(() => {
+    scrollTo(0, 0);
+  }, []);
+
   const handleProductClick = (productId: string) => {
     navigate(`/product/${productId}`);
   };
@@ -126,7 +49,7 @@ export const Home = () => {
   };
 
   return (
-    <Container>
+    <main className="home-container">
       {loading && <ProgressBarCmp progress={progress} />}
       <SearchBar onChange={onChange} value={searchTerm} />
 
@@ -135,7 +58,12 @@ export const Home = () => {
       {error && <div>Error: {error.message}</div>}
 
       {!loading && !error && products && products.length > 0 ? (
-        <Grid role="list" aria-label="Product list" data-testid="product-list">
+        <div
+          className="home-grid"
+          role="list"
+          aria-label="Product list"
+          data-testid="product-list"
+        >
           {products.map((product) => (
             <CardSmartphone
               key={product.id}
@@ -143,12 +71,12 @@ export const Home = () => {
               handleProductClick={handleProductClick}
             />
           ))}
-        </Grid>
+        </div>
       ) : !loading && !error ? (
-        <NoProductsContainer>
-          <NoProductsText>No products available.</NoProductsText>
-        </NoProductsContainer>
+        <div className="home-no-products">
+          <p className="home-no-products__text">No products available.</p>
+        </div>
       ) : null}
-    </Container>
+    </main>
   );
 };

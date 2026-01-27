@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { styled } from 'styled-components';
 
 import type { ProductDetail } from '../schemas';
 
@@ -11,89 +10,7 @@ import {
   SimilarItems,
   BackButton,
 } from '../components';
-
-const Container = styled.main`
-  /* Desktop / Detail / Empty */
-
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 0px;
-  gap: 48px;
-
-  position: absolute;
-  width: 100%;
-  max-width: 1920px;
-  left: 50%;
-  transform: translateX(-50%);
-  top: 148px;
-
-  background: #ffffff;
-
-  @media (max-width: 600px) {
-    top: 120px;
-    gap: 32px;
-  }
-`;
-
-const ProductContainer = styled.div`
-  /* Product info + Img */
-
-  /* Auto layout */
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0px;
-
-  width: 80%;
-
-  @media (max-width: 900px) {
-    flex-direction: column;
-    gap: 32px;
-  }
-
-  @media (max-width: 600px) {
-    width: 90%;
-  }
-`;
-
-const ImageContainer = styled.div`
-  /* Image side */
-
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-
-  background: #ffffff;
-  box-sizing: border-box;
-
-  width: 50%;
-  min-width: 300px;
-
-  @media (max-width: 900px) {
-    width: 100%;
-    min-width: unset;
-  }
-`;
-
-const OptionImg = styled.img`
-  /* Img */
-
-  max-width: 100%;
-  max-height: 600px;
-  object-fit: contain;
-
-  /* Inside auto layout */
-  flex: none;
-  order: 0;
-  flex-grow: 0;
-
-  @media (max-width: 600px) {
-    max-height: 400px;
-  }
-`;
+import './Details.css';
 
 export const Details = () => {
   const [productDetail, setProductDetail] = useState<ProductDetail>(
@@ -125,26 +42,26 @@ export const Details = () => {
   return (
     <>
       <BackButton />
-      <Container>
-        <ProductContainer>
-          {/* Left side: Image */}
-          <ImageContainer>
-            <OptionImg
+      <main className="details-container">
+        <div className="details-product">
+          <div className="details-image">
+            <img
+              className="details-image__img"
               src={
                 productDetail?.colorOptions?.[selectedColor]?.imageUrl ?? null
               }
               alt=""
             />
-          </ImageContainer>
+          </div>
           <ProductInfo
             productDetail={productDetail}
             selectedColor={selectedColor}
             setSelectedColor={setSelectedColor}
           />
-        </ProductContainer>
+        </div>
         <Specifications productDetail={productDetail} />
         <SimilarItems similarProducts={productDetail?.similarProducts ?? []} />
-      </Container>
+      </main>
     </>
   );
 };

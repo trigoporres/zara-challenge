@@ -1,187 +1,7 @@
 import { useNavigate } from 'react-router-dom';
-import { styled } from 'styled-components';
 
 import { useCart } from '../hooks';
-
-const CartContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  min-height: calc(100vh - 60px);
-  padding: 60px 80px;
-  background: #ffffff;
-`;
-
-const CartTitle = styled.h1`
-  font-style: normal;
-  font-weight: 300;
-  font-size: 14px;
-  line-height: 100%;
-  letter-spacing: 0%;
-  text-transform: uppercase;
-  color: #000000;
-  margin: 0 0 40px 0;
-`;
-
-const CartContent = styled.div`
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  gap: 24px;
-`;
-
-const CartItem = styled.div`
-  display: flex;
-  gap: 24px;
-  padding-bottom: 24px;
-  border-bottom: 1px solid #f0f0f0;
-`;
-
-const ProductImage = styled.img`
-  width: 120px;
-  height: 160px;
-  object-fit: contain;
-  background: #f5f5f5;
-`;
-
-const ProductDetails = styled.div`
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-`;
-
-const ProductName = styled.h2`
-  font-style: normal;
-  font-weight: 300;
-  font-size: 14px;
-  line-height: 100%;
-  letter-spacing: 0%;
-  text-transform: uppercase;
-  color: #000000;
-  margin: 0;
-`;
-
-const ProductSpecs = styled.p`
-  font-style: normal;
-  font-weight: 300;
-  font-size: 12px;
-  line-height: 100%;
-  letter-spacing: 0%;
-  text-transform: uppercase;
-  color: #666666;
-  margin: 0;
-`;
-
-const ProductPrice = styled.p`
-  font-style: normal;
-  font-weight: 300;
-  font-size: 14px;
-  line-height: 100%;
-  color: #000000;
-  margin: 0;
-  margin-top: auto;
-`;
-
-const RemoveButton = styled.button`
-  background: none;
-  border: none;
-  font-style: normal;
-  font-weight: 300;
-  font-size: 12px;
-  line-height: 100%;
-  text-transform: uppercase;
-  color: #ff0000;
-  cursor: pointer;
-  padding: 0;
-  align-self: flex-start;
-  margin-top: 8px;
-
-  &:hover {
-    text-decoration: underline;
-  }
-`;
-
-const CartFooter = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-top: 40px;
-  padding-top: 24px;
-  border-top: 1px solid #f0f0f0;
-`;
-
-const ContinueShoppingButton = styled.button`
-  background: #ffffff;
-  border: 1px solid #000000;
-  padding: 16px 24px;
-  font-style: normal;
-  font-weight: 300;
-  font-size: 14px;
-  line-height: 100%;
-  text-transform: uppercase;
-  color: #000000;
-  cursor: pointer;
-
-  &:hover {
-    background: #f5f5f5;
-  }
-`;
-
-const CheckoutSection = styled.div`
-  display: flex;
-  align-items: center;
-  gap: 24px;
-`;
-
-const TotalLabel = styled.div`
-  display: flex;
-  gap: 16px;
-  align-items: center;
-`;
-
-const TotalText = styled.span`
-  font-style: normal;
-  font-weight: 300;
-  font-size: 14px;
-  line-height: 100%;
-  text-transform: uppercase;
-  color: #000000;
-`;
-
-const TotalAmount = styled.span`
-  font-style: normal;
-  font-weight: 300;
-  font-size: 14px;
-  line-height: 100%;
-  color: #000000;
-`;
-
-const PayButton = styled.button`
-  background: #000000;
-  border: none;
-  padding: 16px 48px;
-  font-style: normal;
-  font-weight: 300;
-  font-size: 14px;
-  line-height: 100%;
-  text-transform: uppercase;
-  color: #ffffff;
-  cursor: pointer;
-
-  &:hover {
-    background: #333333;
-  }
-`;
-
-const EmptyCart = styled.div`
-  text-align: center;
-  padding: 60px 20px;
-  font-style: normal;
-  font-weight: 300;
-  font-size: 16px;
-  line-height: 150%;
-  color: #666666;
-`;
+import './Cart.css';
 
 export const Cart = () => {
   const { cart, removeFromCart, removeFromUnitCart } = useCart();
@@ -196,35 +16,43 @@ export const Cart = () => {
       maximumFractionDigits: 0,
     }).format(price);
   };
-  debugger;
+
   if (cart.length === 0) {
     return (
-      <CartContainer>
-        <CartTitle>CART (0)</CartTitle>
-        <EmptyCart>Your cart is empty</EmptyCart>
-        <CartFooter>
-          <ContinueShoppingButton onClick={() => navigate('/')}>
+      <div className="cart-container">
+        <div className="cart-empty">Your cart is empty</div>
+        <div className="cart-footer">
+          <button
+            className="cart-footer__continue-btn"
+            onClick={() => navigate('/')}
+          >
             CONTINUE SHOPPING
-          </ContinueShoppingButton>
-        </CartFooter>
-      </CartContainer>
+          </button>
+        </div>
+      </div>
     );
   }
 
   return (
-    <CartContainer>
-      <CartTitle>CART ({cart.length})</CartTitle>
-      <CartContent>
+    <div className="cart-container">
+      <div className="cart-content">
         {cart.map((product) => (
-          <CartItem key={product.id}>
-            <ProductImage src={product.imageUrl} alt={product.name} />
-            <ProductDetails>
-              <ProductName>{product.name}</ProductName>
-              <ProductSpecs>
+          <div className="cart-item" key={product.id}>
+            <img
+              className="cart-item__image"
+              src={product.imageUrl}
+              alt={product.name}
+            />
+            <div className="cart-item__details">
+              <h2 className="cart-item__name">{product.name}</h2>
+              <p className="cart-item__specs">
                 {product.storage} | {product.color} | Qty: {product.quantity}
-              </ProductSpecs>
-              <ProductPrice>{formatPrice(product.price)} EUR</ProductPrice>
-              <RemoveButton
+              </p>
+              <p className="cart-item__price">
+                {formatPrice(product.price)} EUR
+              </p>
+              <button
+                className="cart-item__remove-btn"
                 onClick={() =>
                   product.quantity > 1
                     ? removeFromUnitCart(product.id)
@@ -232,27 +60,33 @@ export const Cart = () => {
                 }
               >
                 {product.quantity > 1 ? `Remove One` : `Remove from Cart`}
-              </RemoveButton>
-            </ProductDetails>
-          </CartItem>
+              </button>
+            </div>
+          </div>
         ))}
-      </CartContent>
-      <CartFooter>
-        <ContinueShoppingButton onClick={() => navigate('/')}>
+      </div>
+      <div className="cart-footer">
+        <button
+          className="cart-footer__continue-btn"
+          onClick={() => navigate('/')}
+        >
           CONTINUE SHOPPING
-        </ContinueShoppingButton>
-        <CheckoutSection>
-          <TotalLabel>
-            <TotalText>TOTAL</TotalText>
-            <TotalAmount>{formatPrice(total)} EUR</TotalAmount>
-          </TotalLabel>
-          <PayButton
+        </button>
+        <div className="cart-checkout">
+          <div className="cart-checkout__total">
+            <span className="cart-checkout__total-text">TOTAL</span>
+            <span className="cart-checkout__total-amount">
+              {formatPrice(total)} EUR
+            </span>
+          </div>
+          <button
+            className="cart-checkout__pay-btn"
             onClick={() => alert('Payment functionality not implemented')}
           >
             PAY
-          </PayButton>
-        </CheckoutSection>
-      </CartFooter>
-    </CartContainer>
+          </button>
+        </div>
+      </div>
+    </div>
   );
 };
