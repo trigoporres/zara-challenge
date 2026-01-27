@@ -17,9 +17,12 @@ export const Cart = () => {
     }).format(price);
   };
 
+  const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+
   if (cart.length === 0) {
     return (
       <div className="cart-container">
+        <h1 className="cart-title">Cart (0)</h1>
         <div className="cart-empty">Your cart is empty</div>
         <div className="cart-footer">
           <button
@@ -35,6 +38,7 @@ export const Cart = () => {
 
   return (
     <div className="cart-container">
+      <h1 className="cart-title">Cart ({totalItems})</h1>
       <div className="cart-content">
         {cart.map((product) => (
           <div className="cart-item" key={product.id}>
