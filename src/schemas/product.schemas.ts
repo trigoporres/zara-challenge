@@ -41,6 +41,7 @@ export const ProductDetailSchema = z.object({
   rating: z.number().min(0).max(5),
   colorOptions: z.array(ColorOptionSchema).min(1),
   storageOptions: z.array(StorageOptionSchema).min(1),
+  specs: SpecsSchema,
   similarProducts: z.array(ProductSchema),
 });
 
