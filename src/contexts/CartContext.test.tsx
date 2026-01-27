@@ -213,7 +213,7 @@ describe('CartContext with Zod validation', () => {
     expect(result.current.cart).toHaveLength(1);
 
     act(() => {
-      result.current.actions?.removeFromCart('123');
+      result.current.actions?.removeFromCart('123', 'Black', '128GB');
     });
 
     expect(result.current.cart).toHaveLength(0);
