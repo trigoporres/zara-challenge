@@ -1,0 +1,80 @@
+.similar-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding: 48px 0;
+  box-sizing: border-box;
+}
+
+.similar-title {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 29px;
+  color: #000000;
+  margin: 0 0 48px 0;
+  padding: 0 100px;
+}
+
+@media (max-width: 600px) {
+  .similar-title {
+    padding: 0 20px;
+    margin: 0 0 24px 0;
+    font-size: 20px;
+  }
+}
+
+.scroll-container {
+  width: 85%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  box-sizing: border-box;
+  margin: 0 auto;
+}
+
+/* Custom scrollbar */
+.scroll-container::-webkit-scrollbar {
+  height: 5px;
+}
+
+.scroll-container::-webkit-scrollbar-track {
+  background: #fff;
+}
+
+.scroll-container::-webkit-scrollbar-thumb {
+  background: #000;
+  border-radius: 4px;
+}
+
+.scroll-container::-webkit-scrollbar-thumb:hover {
+  background: #fff;
+}
+
+@media (max-width: 600px) {
+  .scroll-container {
+    padding: 0 20px;
+  }
+}
+
+.items-wrapper {
+  display: flex;
+  flex-direction: row;
+  gap: 0;
+  width: fit-content;
+}
+
+.card-wrapper {
+  flex: 0 0 auto;
+  width: 300px;
+}
+
+/* Override CardSmartphone width for horizontal scroll */
+.card-wrapper > article {
+  width: 100%;
+}
+
+@media (max-width: 600px) {
+  .card-wrapper {
+    width: 200px;
+  }
+}
