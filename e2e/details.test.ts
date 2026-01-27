@@ -35,7 +35,7 @@ test.describe('Product Details', () => {
   test('should display specifications section', async ({ page }) => {
     await page.goto('/product/1');
 
-    await expect(page.getByText('SPECIFICATIONS')).toBeVisible();
+    await expect(page.getByTestId('specifications')).toBeVisible();
     await expect(page.getByText(mockProductDetail.brand)).toBeVisible();
     await expect(page.getByText(mockProductDetail.description)).toBeVisible();
   });
@@ -67,7 +67,9 @@ test.describe('Product Details', () => {
     await expect(page.getByText('Color. Pick your favourite.')).toBeVisible();
   });
 
-  test('should have add to cart button disabled initially', async ({ page }) => {
+  test('should have add to cart button disabled initially', async ({
+    page,
+  }) => {
     await page.goto('/product/1');
 
     const addToCartButton = page.getByRole('button', { name: /add to cart/i });

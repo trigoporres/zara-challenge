@@ -1,0 +1,64 @@
+.specificationsContainer {
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+  padding: 48px 0;
+
+  @media (max-width: 600px) {
+    width: 90%;
+    padding: 32px 0;
+  }
+}
+
+.specificationsTitle {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 29px;
+  color: #000000;
+  margin: 0 0 48px 0;
+}
+
+.specsTable {
+  display: flex;
+  flex-direction: column;
+  border-top: 1px solid #e0e0e0;
+}
+
+.specRow {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 24px 0;
+  border-bottom: 1px solid #e0e0e0;
+
+  @media (max-width: 600px) {
+    flex-direction: column;
+    gap: 8px;
+    padding: 16px 0;
+  }
+}
+
+.specLabel {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 17px;
+  text-transform: uppercase;
+  color: #000000;
+  flex: 0 0 200px;
+
+  @media (max-width: 600px) {
+    flex: none;
+    font-weight: 500;
+  }
+}
+
+.specValue {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 17px;
+  color: #000000;
+  flex: 1;
+}
