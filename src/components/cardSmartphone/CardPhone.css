@@ -21,6 +21,18 @@
   flex-grow: 0;
 }
 
+.card-phone > a {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 24px;
+  width: 100%;
+  height: 100%;
+  text-decoration: none;
+  color: inherit;
+}
+
 .card-phone::before {
   content: '';
   position: absolute;
@@ -33,32 +45,32 @@
   z-index: -1;
 }
 
-.card-phone:hover,
-.card-phone:focus-visible {
+.card-phone:has(a:hover),
+.card-phone:has(a:focus-visible) {
   cursor: pointer;
 }
 
-.card-phone:hover::before,
-.card-phone:focus-visible::before {
+.card-phone:has(a:hover)::before,
+.card-phone:has(a:focus-visible)::before {
   height: 100%;
 }
 
-.card-phone:hover .brand,
-.card-phone:focus-visible .brand {
+.card-phone:has(a:hover) .brand,
+.card-phone:has(a:focus-visible) .brand {
   color: #ffffff;
 }
 
-.card-phone:hover .name,
-.card-phone:focus-visible .name {
+.card-phone:has(a:hover) .name,
+.card-phone:has(a:focus-visible) .name {
   color: #ffffff;
 }
 
-.card-phone:hover .base-price,
-.card-phone:focus-visible .base-price {
+.card-phone:has(a:hover) .base-price,
+.card-phone:has(a:focus-visible) .base-price {
   color: #ffffff;
 }
 
-.card-phone:focus-visible {
+.card-phone a:focus-visible {
   outline: 2px solid #005fcc;
   outline-offset: -2px;
 }
