@@ -21,7 +21,7 @@ export const useProducts = ({ searchQuery }: { searchQuery?: string } = {}) => {
       try {
         let data = [];
 
-        if (!!searchQuery) {
+        if (searchQuery) {
           data = await productService.search(searchQuery);
         } else {
           data = await productService.getAll();
