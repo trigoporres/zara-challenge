@@ -10,4 +10,5 @@ export const safeUrl = () =>
         value.startsWith(`https://${allowedDomain}`) ||
         value.startsWith(`http://${allowedDomain}`),
       `URL must use https:// or http:// protocol and ${allowedDomain}`,
-    );
+    )
+    .transform((url) => url.replace(/^http:\/\//, 'https://'));
